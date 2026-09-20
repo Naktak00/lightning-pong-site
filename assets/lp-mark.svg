@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-labelledby="title desc">
+  <title id="title">Lightning Pong mark</title>
+  <desc id="desc">A lightning bolt, paddles, and colored orbs representing Lightning Pong.</desc>
+  <rect width="320" height="180" rx="18" fill="#07111f"/>
+  <path d="M52 40h24v100H52zM244 40h24v100h-24z" fill="#e8f4ff"/>
+  <path d="M165 24l-48 72h40l-18 60 66-86h-42l2-46z" fill="#ffd84d"/>
+  <circle cx="102" cy="58" r="13" fill="#ff3f6e"/>
+  <circle cx="218" cy="122" r="13" fill="#45a3ff"/>
+  <circle cx="101" cy="123" r="11" fill="#39d98a"/>
+  <path d="M42 30h236M42 150h236" stroke="#223a59" stroke-width="4" stroke-linecap="round"/>
+</svg>
