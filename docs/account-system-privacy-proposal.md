@@ -79,12 +79,12 @@ Turning off future participation alone does not silently rewrite the historical 
 ## 6. Retention proposal
 
 - **Active profile and saves:** retained while the account remains active or until the player deletes them.
-- **Withdrawn/declined alpha request:** retained for a limited administrative period, then deleted or de-identified.
-- **Rejected score claim:** retained briefly for abuse prevention and appeal handling, then deleted or de-identified.
+- **Withdrawn/declined alpha request:** retained for up to 12 months for program administration, then deleted or de-identified.
+- **Rejected score claim:** retained for up to 90 days for abuse prevention and appeal handling, then deleted or de-identified.
 - **Accepted public leaderboard entry:** retained as a historical record by default, even if future participation is disabled. The player may separately request removal of prior entries.
-- **Deleted account:** private profile, saves, enrollment data, and score claims deleted or de-identified after any short security/backup interval disclosed in the final policy.
+- **Deleted account:** private profile, saves, enrollment data, and score claims removed or de-identified from active systems within 30 days. Residual copies in provider-managed backups expire under the provider's normal backup cycle and are not restored for ordinary product use after deletion.
 
-Exact retention periods must be chosen before publication; the site should not promise instant deletion from disaster-recovery backups if the provider cannot guarantee it.
+The final policy must describe these as maximum operational periods rather than a promise of instant removal from provider-managed disaster-recovery backups.
 
 ## 7. Children and family use
 
@@ -125,10 +125,12 @@ The final copy must preserve the distinction between the current offline Android
 - Minimum age for a self-managed account: **13**.
 - Initial sign-in methods: **email magic link and Google sign-in**.
 - Disabling future leaderboard participation does **not** automatically remove historical entries. Keeping them is the default, with a separate removal request available.
+- Withdrawn or declined alpha requests are retained for up to **12 months**.
+- Rejected score submissions are retained for up to **90 days**.
+- Deleted-account data is removed or de-identified from active systems within **30 days**, while residual provider backups expire through the provider's normal backup cycle.
 
 ## 12. Decisions reserved for Nana
 
-- Exact retention periods.
 - Whether alpha enrollment uses the account email or a separate contact address.
 - Public handle moderation and appeal process.
 - Account export and deletion request channel.
