@@ -69,34 +69,36 @@ The account interface should provide plain-language controls to:
 - request a machine-readable account export;
 - request account deletion.
 
-Disabling leaderboard participation should prevent future publication. A separate decision is needed on whether it also removes previously published entries automatically or sends them for review.
+Disabling leaderboard participation prevents future publication and presents a separate choice for existing entries:
+
+- **Keep historical entries** — the default, preserving the record of accepted past runs; or
+- **Request removal of prior entries** — available when the player wants them removed, including when a record was materially incorrect, fraudulent, or otherwise seriously compromised.
+
+Turning off future participation alone does not silently rewrite the historical leaderboard.
 
 ## 6. Retention proposal
 
 - **Active profile and saves:** retained while the account remains active or until the player deletes them.
 - **Withdrawn/declined alpha request:** retained for a limited administrative period, then deleted or de-identified.
 - **Rejected score claim:** retained briefly for abuse prevention and appeal handling, then deleted or de-identified.
-- **Accepted public leaderboard entry:** retained while participation remains enabled, subject to the final removal policy.
+- **Accepted public leaderboard entry:** retained as a historical record by default, even if future participation is disabled. The player may separately request removal of prior entries.
 - **Deleted account:** private profile, saves, enrollment data, and score claims deleted or de-identified after any short security/backup interval disclosed in the final policy.
 
 Exact retention periods must be chosen before publication; the site should not promise instant deletion from disaster-recovery backups if the provider cannot guarantee it.
 
 ## 7. Children and family use
 
-Before account signup is enabled, Nana should choose one approach:
+Self-managed Lightning Pong accounts are limited to users **age 13 or older**. The browser demo remains playable without an account. Testing involving younger players must be managed through an authorized adult unless a separate verified parental-consent workflow is designed and approved in the future.
 
-1. **Accounts limited to users age 13 or older** (recommended for the first prototype), with adult-managed testing for younger players; or
-2. a verified parental-consent workflow designed and reviewed specifically for younger users.
-
-Until that choice and workflow are complete, the browser demo may remain playable without an account, but account creation should not be promoted to children.
+The account interface must present the age requirement before signup and must not promote self-managed account creation to children under 13.
 
 ## 8. Proposed signup consent copy
 
-> Create an optional Lightning Pong account to save browser-demo progress, request alpha access, and submit scores for review. Your email and private game data will be stored through Supabase. Nothing is posted publicly unless you separately opt in to the leaderboard and a submitted run is approved. You can play the three-level browser demo without creating an account.
+> If you are 13 or older, you may create an optional Lightning Pong account using an email magic link or Google sign-in. An account can save browser-demo progress, request alpha access, and submit scores for review. Your email and private game data will be stored through Supabase. Nothing is posted publicly unless you separately opt in to the leaderboard and a submitted run is approved. You can play the three-level browser demo without creating an account.
 
 Required acknowledgement:
 
-> I have read the Privacy Policy and agree to the optional account data practices described there. I understand that leaderboard publication is a separate choice.
+> I confirm that I am at least 13 years old. I have read the Privacy Policy and agree to the optional account data practices described there. I understand that leaderboard publication is a separate choice.
 
 The interface should link directly to the effective privacy policy and record the exact consent-version identifier on the server rather than accepting a version supplied by the browser.
 
@@ -118,18 +120,21 @@ The following pages currently promise no accounts, transmission, server storage,
 
 The final copy must preserve the distinction between the current offline Android release and the optional online browser features. The live account controls must remain disabled until the updated policy is published and the consent version matches the server configuration.
 
-## 11. Decisions reserved for Nana
+## 11. Approved product decisions
 
-- Minimum age for self-managed accounts.
-- Initial sign-in method: email magic link, Google sign-in, or both.
+- Minimum age for a self-managed account: **13**.
+- Initial sign-in methods: **email magic link and Google sign-in**.
+- Disabling future leaderboard participation does **not** automatically remove historical entries. Keeping them is the default, with a separate removal request available.
+
+## 12. Decisions reserved for Nana
+
 - Exact retention periods.
-- Whether withdrawing leaderboard consent removes prior entries automatically.
 - Whether alpha enrollment uses the account email or a separate contact address.
 - Public handle moderation and appeal process.
 - Account export and deletion request channel.
 - The build identifier and ruleset that will open the first leaderboard season.
 
-## 12. Safe implementation order
+## 13. Safe implementation order
 
 1. Approve the decisions above and revise this proposal.
 2. Publish the coordinated privacy, Q&A, home-page, and tester-guide changes.
