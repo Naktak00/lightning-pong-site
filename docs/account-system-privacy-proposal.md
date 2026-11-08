@@ -69,6 +69,8 @@ The account interface should provide plain-language controls to:
 - request a machine-readable account export;
 - request account deletion.
 
+Alpha enrollment uses the authenticated account email already held by the authentication service. Lightning Pong does not request or store a duplicate enrollment-contact address.
+
 Disabling leaderboard participation prevents future publication and presents a separate choice for existing entries:
 
 - **Keep historical entries** — the default, preserving the record of accepted past runs; or
@@ -128,13 +130,14 @@ The final copy must preserve the distinction between the current offline Android
 - Withdrawn or declined alpha requests are retained for up to **12 months**.
 - Rejected score submissions are retained for up to **90 days**.
 - Deleted-account data is removed or de-identified from active systems within **30 days**, while residual provider backups expire through the provider's normal backup cycle.
+- Alpha enrollment uses the authenticated account email rather than collecting a second contact address.
+- Handles receive immediate format and blocklist checks, followed by manual review before leaderboard publication. Appeals use the published support/privacy contact.
+- Account export and deletion requests begin from the account page, with the published privacy contact available as a fallback.
+- The first leaderboard build and ruleset remain unset until the polished three-level demo is finalized and tested.
 
 ## 12. Decisions reserved for Nana
 
-- Whether alpha enrollment uses the account email or a separate contact address.
-- Public handle moderation and appeal process.
-- Account export and deletion request channel.
-- The build identifier and ruleset that will open the first leaderboard season.
+- Final build identifier and ruleset values after the polished demo is complete.
 
 ## 13. Safe implementation order
 
