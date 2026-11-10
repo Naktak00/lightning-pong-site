@@ -5,6 +5,8 @@ Static GitHub Pages site for Lightning Pong v0.2 Closed Alpha.
 Pages:
 
 - `index.html`
+- `account.html`
+- `auth-callback.html`
 - `privacy.html`
 - `tester-guide.html`
 - `qa.html`

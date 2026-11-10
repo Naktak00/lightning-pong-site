@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lightning Pong | v0.2 Closed Alpha</title>
-  <meta name="description" content="Lightning Pong v0.2 Closed Alpha public information, privacy policy, and tester guide.">
+  <title>Lightning Pong | Arcade momentum, one spark at a time</title>
+  <meta name="description" content="Lightning Pong is an offline-first Android arcade game in closed alpha, with a three-level browser demo and optional player profiles in development.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,61 +12,72 @@
     <a class="brand" href="index.html"><img src="assets/lp-mark.svg" alt="">Lightning Pong</a>
     <nav class="nav" aria-label="Main navigation">
       <a href="index.html" aria-current="page">Home</a>
+      <a href="account.html">Player Lab</a>
       <a href="privacy.html">Privacy</a>
       <a href="tester-guide.html">Tester Guide</a>
-      <a href="qa.html">Q&A</a>
+      <a href="qa.html">Q&amp;A</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
 
-  <section class="hero">
-    <div>
-      <h1>Lightning Pong</h1>
-      <p>Offline Android arcade action, currently in v0.2 Closed Alpha testing through Google Play.</p>
-      <div class="actions">
-        <a class="button primary" href="tester-guide.html">Tester Guide</a>
-        <a class="button" href="privacy.html">Privacy Policy</a>
+  <main class="home-main">
+    <section class="hero hero-home">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> v0.2 closed alpha · Android</p>
+        <h1>Catch the spark.<br><span>Control the chaos.</span></h1>
+        <p>Lightning Pong is a fast, colorful arcade challenge built around split-second saves, PX progression, and nine increasingly unruly levels.</p>
+        <div class="actions">
+          <a class="button primary" href="tester-guide.html">Enter the closed alpha</a>
+          <a class="button" href="#demo">Explore the 3-level demo</a>
+        </div>
+        <ul class="hero-facts" aria-label="Game highlights">
+          <li><strong>9</strong><span>Android levels</span></li>
+          <li><strong>Offline</strong><span>after install</span></li>
+          <li><strong>0</strong><span>ads</span></li>
+        </ul>
       </div>
-    </div>
-    <img class="hero-art" src="assets/lp-mark.svg" alt="Lightning Pong mark with paddles and colored orbs">
-  </section>
-
-  <main>
-    <section class="grid" aria-label="Closed alpha highlights">
-      <article class="card accent-blue">
-        <h2>Closed Alpha Focus</h2>
-        <p>This test checks install flow, Android stability, local saving, sound, level flow, controls, and whether testers can report confusing moments clearly.</p>
-      </article>
-      <article class="card accent-green">
-        <h2>Current Release</h2>
-        <p>Lightning Pong v0.2 Closed Alpha includes Levels 1-9, original/custom audio, local PX progression, unlocks, achievements, and settings.</p>
-      </article>
-      <article class="card accent-red">
-        <h2>Offline First</h2>
-        <p>The Android game does not require an account, does not show ads, and is designed to run offline after installation. Planned browser accounts are optional.</p>
-      </article>
-    </section>
-
-    <section class="section">
-      <h2>For Testers</h2>
-      <p>Access is by invitation through Google Play. If you are part of the closed test, start with the tester guide and report anything that blocks play, looks broken, sounds wrong, or feels confusing.</p>
-      <div class="actions">
-        <a class="button primary" href="tester-guide.html">Read Tester Guide</a>
-        <a class="button" href="qa.html">Troubleshooting</a>
+      <div class="arena-card" aria-label="Stylized Lightning Pong arena">
+        <div class="arena-grid"></div><div class="paddle paddle-left"></div><div class="paddle paddle-right"></div>
+        <div class="orb orb-red"></div><div class="orb orb-blue"></div><div class="orb orb-green"></div>
+        <div class="bolt" aria-hidden="true">ϟ</div><p>PX / MOMENTUM</p>
       </div>
     </section>
 
-    <section class="section">
-      <h2>Browser Demo in Development</h2>
-      <p>A polished three-level browser demo is being prepared. It will remain playable without an account. Players age 13 or older may later choose an optional account for cloud saves, alpha enrollment, and reviewed leaderboard submissions.</p>
-      <div class="actions">
-        <a class="button" href="privacy.html">Review Optional Account Privacy</a>
+    <section class="signal-strip" aria-label="Project status">
+      <div><span>PLAY NOW</span><strong>Android closed alpha</strong></div>
+      <div><span>NEXT DROP</span><strong>3-level browser demo</strong></div>
+      <div><span>LATEST BUILD</span><strong>Player identity foundation</strong></div>
+    </section>
+
+    <section class="story-section" id="demo">
+      <div class="section-heading"><p class="eyebrow">The public demo</p><h2>Three levels. No account wall.</h2><p>The browser release is being rebuilt as a polished slice of Lightning Pong. Visitors will be able to play immediately; signing in will only add continuity and community features.</p></div>
+      <div class="feature-grid">
+        <article class="feature-card blue"><span class="feature-number">01</span><h3>Instant play</h3><p>The demo remains playable without registration. Opening the game should lead to play—not paperwork.</p></article>
+        <article class="feature-card green"><span class="feature-number">02</span><h3>Two ways to climb</h3><p>Planned reviewed leaderboards reward the fastest clear and the lowest PX used. Different styles, equal bragging rights.</p></article>
+        <article class="feature-card pink"><span class="feature-number">03</span><h3>Keep the run</h3><p>Optional profiles will support cloud continuity, alpha enrollment, and score submissions once the invitation-only test is ready.</p></article>
+      </div>
+      <div class="demo-gate"><div><span class="pill">IN DEVELOPMENT</span><h3>Browser arena doors are being wired.</h3><p>The archive build proved the game can live online. This release is the public-facing version: cleaner, safer, and designed to grow.</p></div><button class="button disabled" type="button" disabled>3 Lv Demo · coming next</button></div>
+    </section>
+
+    <section class="story-section account-story">
+      <div class="section-heading"><p class="eyebrow">Player identity lab</p><h2>A passport, not a toll booth.</h2><p>The secure account foundation now connects Google sign-in to Lightning Pong. Registration remains closed while the profile experience and privacy controls are tested.</p></div>
+      <div class="account-preview">
+        <div class="passport-card"><div class="passport-top"><span>LIGHTNING PONG</span><span>PLAYER PASSPORT</span></div><div class="passport-body"><img src="assets/lp-mark.svg" alt="Lightning Pong emblem"><div><span>CALLSIGN</span><strong>Your name here</strong><span>ACCESS</span><strong>Invitation only</strong></div></div><div class="passport-code">LP · PX · 13+ · PRIVATE BY DEFAULT</div></div>
+        <div class="account-points"><p><span>✓</span> Google and email sign-in planned</p><p><span>✓</span> Public scores require separate consent</p><p><span>✓</span> Historical scores stay unless removal is requested</p><p><span>✓</span> Account export and deletion controls planned</p><a class="button" href="account.html">Visit the Player Lab</a></div>
       </div>
     </section>
+
+    <section class="story-section build-log">
+      <div class="section-heading"><p class="eyebrow">Live build log</p><h2>Recent milestones</h2></div>
+      <ol class="timeline">
+        <li><time datetime="2026-11-07">Nov 7</time><div><strong>Identity foundation connected</strong><p>Dedicated Supabase project, Google OAuth, protected return paths, and closed-registration safeguards established.</p></div></li>
+        <li><time datetime="2026-11-07">Nov 7</time><div><strong>Privacy language aligned</strong><p>The site now separates the offline Android game from optional future browser accounts.</p></div></li>
+        <li><time>Next</time><div><strong>Invitation-only account test</strong><p>Wire the public browser key, test a single approved profile, then keep the doors closed until the experience is ready.</p></div></li>
+      </ol>
+    </section>
+
+    <section class="closing-cta"><p class="eyebrow">Built in public, released with care</p><h2>Lightning Pong is learning how to travel.</h2><p>Android first. Browser next. Your progress should move only when you ask it to.</p><div class="actions"><a class="button primary" href="tester-guide.html">Read the tester guide</a><a class="button" href="privacy.html">See the privacy promise</a></div></section>
   </main>
-
-  <footer class="site-footer">
-    <p>Lightning Pong v0.2 Closed Alpha. This is a testing release, not the final public version.</p>
-  </footer>
+  <footer class="site-footer"><p><strong>Lightning Pong</strong> · v0.2 Closed Alpha</p><p>Offline-first Android arcade action. Browser demo and optional profiles in active development.</p></footer>
 </body>
 </html>
