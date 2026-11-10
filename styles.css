@@ -39,6 +39,7 @@ button, input { font: inherit; }
 .hero-facts li { display: grid; }
 .hero-facts strong { font-size: 1.12rem; }
 .hero-facts span { color: var(--muted); font-size: .78rem; }
+.player-promise { display: block; width: min(100%, 660px); margin-top: 34px; border-radius: 14px; filter: drop-shadow(0 14px 24px rgba(0,0,0,.22)); }
 .arena-card { position: relative; width: min(100%,460px); aspect-ratio: 4/5; justify-self: center; overflow: hidden; border: 1px solid #38577c; border-radius: 22px; background: linear-gradient(180deg,rgba(17,36,58,.95),rgba(6,14,26,.96)); box-shadow: 0 30px 80px rgba(0,0,0,.5), inset 0 0 80px rgba(69,163,255,.07); }
 .arena-card::after { content: ""; position: absolute; inset: 18px; border: 1px solid rgba(139,199,255,.18); border-radius: 14px; }
 .arena-grid { position: absolute; inset: 0; opacity: .17; background-image: linear-gradient(rgba(139,199,255,.25) 1px,transparent 1px),linear-gradient(90deg,rgba(139,199,255,.25) 1px,transparent 1px); background-size: 32px 32px; }
