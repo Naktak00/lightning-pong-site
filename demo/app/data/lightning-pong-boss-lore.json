@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "collection": "lightning-pong-boss-lore",
+  "bosses": [
+    {
+      "level": 1,
+      "id": "the-wall",
+      "name": "The Wall",
+      "battleInsight": "Patience opens what force cannot; watch for the return after a perfect defense.",
+      "segments": {
+        "trace": "I learned the shape of every blow,\nand answered each with stone.\nThe world called this protection.\nI called it standing alone.",
+        "fracture": "No wound could pass the boundary,\nso neither could a hand.\nI raised my strength between us\nuntil none could understand.",
+        "echo": "Yet every strike I turned away\nreturned with something more:\na rhythm asking quietly\nwhat walls are truly for.",
+        "ascension": "At last I leave one opening\nwhere once I sealed them all.\nFor strength is not remaining stone—\nbut choosing when to fall."
+      }
+    },
+    {
+      "level": 2,
+      "id": "the-rocket",
+      "name": "The Rocket",
+      "battleInsight": "Do not chase raw speed; anticipate the lane The Rocket has already committed to.",
+      "segments": {
+        "trace": "I burned the ground behind me\nbefore it learned my name.\nThe horizon fled before my feet;\nI praised the fleeing flame.",
+        "fracture": "Each summit became smaller\nbefore my pulse grew still.\nI mistook the lack of distance\nfor the proof of greater will.",
+        "echo": "But speed can cross a universe\nand never learn its size.\nA trail remembers where I was;\nit cannot tell me why.",
+        "ascension": "So let one star remain ahead,\nnot conquered, only bright.\nI need not own the horizon\nto keep it in my sight."
+      }
+    },
+    {
+      "level": 3,
+      "id": "the-shepherd",
+      "name": "The Shepherd",
+      "battleInsight": "Its guidance is also control; resist the obvious route and create your own angle.",
+      "segments": {
+        "trace": "I bent the paths toward safety\nand taught the lights to lead.\nNo wandering step was wasted;\nno garden grew from need.",
+        "fracture": "I knew where every road should end,\nso choice became a flaw.\nThe gentlest hand may still become\na quiet kind of law.",
+        "echo": "Then one small current left my field\nand crossed the stones alone.\nI watched it find, by losing me,\na destination of its own.",
+        "ascension": "Now pathways curve but do not close;\nmy lanterns merely glow.\nTo guide is not to choose the road—\nit is to let one go."
+      }
+    },
+    {
+      "level": 4,
+      "id": "the-trickster",
+      "name": "The Trickster",
+      "battleInsight": "Trust motion more than appearances; the safest-looking pattern may be the deception.",
+      "segments": {
+        "trace": "I hung ten doors upon one wall\nand painted nine as true.\nThe clever laughed and chose at once;\nI changed the hinges too.",
+        "fracture": "I made uncertainty a crown\nso none could fool me first.\nBut every joke that hid my face\nmade being known feel worse.",
+        "echo": "One mirror failed to flatter me;\nit simply held its place.\nI waited for the trick to bloom\nand found my waiting face.",
+        "ascension": "So keep one door without a maze,\none answer without art.\nThe finest trick I never learned\nwas how to hide my heart."
+      }
+    },
+    {
+      "level": 5,
+      "id": "the-furnace",
+      "name": "The Furnace",
+      "battleInsight": "Momentum feeds the Furnace; interrupt its rhythm before pressure becomes heat.",
+      "segments": {
+        "trace": "I fed the fire another sun\nand asked it to endure.\nEach hotter flame became the proof\nthat hotter still was pure.",
+        "fracture": "The forge obeyed until its glow\noutshone the hands that made it.\nI called the ruin sacrifice\nbecause I could not name it.",
+        "echo": "Beneath the roar, one ember waits,\ncontent to simply be.\nIt warms the iron without demanding\nall that it can see.",
+        "ascension": "I close the gate before the blaze\ncan swallow forge and name.\nThe highest heat is not the test—\nbut what survives the flame."
+      }
+    },
+    {
+      "level": 6,
+      "id": "the-trapper",
+      "name": "The Trapper",
+      "battleInsight": "The cage depends on predictable collisions; vary your returns and make its certainty expensive.",
+      "segments": {
+        "trace": "I counted every possible step\nand wired the spaces thin.\nBefore a foot could choose its path,\nI knew where it had been.",
+        "fracture": "No accident could enter here;\nno chance escaped my sight.\nI made a perfect cage of cause\nand slept inside at night.",
+        "echo": "Then something struck the seventh gate\nat an unmeasured degree.\nThe flaw was not within my trap—\nthe trapped thing had been me.",
+        "ascension": "I leave one circuit incomplete,\none outcome undefined.\nA door is more than open space;\nit is permission to change one's mind."
+      }
+    },
+    {
+      "level": 7,
+      "id": "the-traveler",
+      "name": "The Traveler",
+      "battleInsight": "Portals tempt prediction; track the return path rather than the destination that draws your eye.",
+      "segments": {
+        "trace": "I kept a thousand worlds in reach\nand slept in none for long.\nEach gate became a promise\nthat elsewhere I belonged.",
+        "fracture": "I crossed until departure\nwas the only home I knew.\nEvery world remained unfinished;\nevery farewell stayed new.",
+        "echo": "Between two broken passages\nI heard no portal sing.\nThe silence had no destination—\nand did not ask a thing.",
+        "ascension": "Perhaps the road is not a home,\nnor home the journey's end.\nI choose one sky to stand beneath\nbefore I leave again."
+      }
+    },
+    {
+      "level": 8,
+      "id": "the-phantom",
+      "name": "The Phantom",
+      "battleInsight": "Afterimages preserve old intentions; follow what changes, not what lingers.",
+      "segments": {
+        "trace": "The hall remembers every step\nthough no one walks it now.\nMoonlight keeps my outlines\nwhere time forgot me how.",
+        "fracture": "I learned to leave before goodbye,\nto fade before the pain.\nSoon absence was the only shape\nI knew how to maintain.",
+        "echo": "But echoes are not emptiness;\nthey prove a sound was there.\nEven broken glass holds moonlight\nwithout pretending to repair.",
+        "ascension": "So let my final afterimage\nremain, then disappear.\nTo vanish is not to be nothing—\nit means I once was here."
+      }
+    },
+    {
+      "level": 9,
+      "id": "the-duelist",
+      "name": "The Duelist",
+      "battleInsight": "The Duelist rewards precision over panic; every committed strike creates an equally precise opening.",
+      "segments": {
+        "trace": "I drew a line across the storm\nand waited at its end.\nAn equal standing opposite\nwas neither foe nor friend.",
+        "fracture": "I sharpened every victory\nuntil I could not see\nwhether I sought a worthy rival\nor someone worthy of me.",
+        "echo": "Then steel-blue thunder answered red,\nand neither sky withdrew.\nRespect was born between the strikes\nwhere certainty broke through.",
+        "ascension": "I leave the line unbroken now,\nbut cross it without shame.\nThe rival who can wound my pride\nmay also forge my name."
+      }
+    },
+    {
+      "level": 10,
+      "id": "the-master",
+      "name": "The Master",
+      "battleInsight": "Every lesson returns here; mastery is recognizing old patterns after their colors and timing have changed.",
+      "segments": {
+        "trace": "I gathered every scar and road,\neach gate, each flame, each fall.\nI placed them in a single hall\nand thought I knew them all.",
+        "fracture": "Knowledge hardened into form;\nmy answers learned to stay.\nThe student changed between my words\nwhile I preserved yesterday.",
+        "echo": "Then black fire crossed the archive\nand spared what could still bend.\nA lesson kept from changing\nhas already met its end.",
+        "ascension": "So take from me no final truth,\nno perfect, finished art.\nA master leaves the door unlocked\nand lets the student start."
+      }
+    },
+    {
+      "level": 11,
+      "id": "the-sovereign",
+      "name": "The Sovereign",
+      "battleInsight": "The Sovereign controls symmetry; watch for the tiny contradiction where reflection stops obeying.",
+      "segments": {
+        "trace": "I set the heavens into pairs\nand crowned the dark with light.\nEach opposite received its place;\neach wrong reflected right.",
+        "fracture": "I ruled until perfection\nmade every answer mine.\nYet nothing new can enter worlds\nwhere all must match design.",
+        "echo": "Beneath the eclipse, the mirror moved\none heartbeat out of time.\nA flaw no law had summoned\nbecame a living sign.",
+        "ascension": "I do not break the mirrored court;\nI let the difference stay.\nA crown that cannot yield its shape\nwill never greet the day."
+      }
+    },
+    {
+      "level": 1,
+      "id": "shadow-box",
+      "name": "Shadow Box",
+      "battleInsight": "Your opponent inherits your habits; break your own rhythm before it learns you completely.",
+      "segments": {
+        "trace": "I met a motion shaped like mine\nbehind the darkened glass.\nIt knew the turns I favored\nand the angles I would pass.",
+        "fracture": "I blamed the shadow for my faults,\nthen watched it blame me too.\nEach flaw became an inheritance;\neach answer something new.",
+        "echo": "It was never merely copying—\nit listened as I changed.\nThe stranger grew familiar\nwhile the familiar grew strange.",
+        "ascension": "I leave no shadow conquered here,\nno lesser self behind.\nI taught my echo how to move;\nmy echo changed my mind."
+      }
+    },
+    {
+      "level": 1,
+      "id": "mirror-arena",
+      "name": "Mirror Arena",
+      "battleInsight": "Symmetry exposes assumptions; what looks identical may answer differently once you act.",
+      "segments": {
+        "trace": "Two heavens touched the skyglass,\nblue answering rose in kind.\nI searched the mirrored distance\nfor the border between minds.",
+        "fracture": "Each side returned the other's light,\nyet neither stayed the same.\nReflection kept the silhouette\nbut never kept the flame.",
+        "echo": "I asked which image came before,\nwhich echo followed through.\nThe water held both questions\nand divided neither view.",
+        "ascension": "At last the glass reflects no halves,\nno first and second star.\nTwo lights may share one horizon\nwithout forgetting what they are."
+      }
+    }
+  ]
+}

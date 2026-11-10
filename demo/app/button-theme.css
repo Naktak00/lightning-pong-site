@@ -1,0 +1,39 @@
+button:not(.brand):not(.level-card) {
+  min-height: 38px;
+  padding: .55rem .8rem;
+  border: 1px solid #467781;
+  border-radius: 6px;
+  background: linear-gradient(145deg, #1b3540 0%, #0b1721 52%, #231b20 100%);
+  color: #eef9fb;
+  box-shadow: inset 0 1px #a8edfa44, inset 0 -2px #02070dcc, 0 2px 6px #0008;
+  transition: border-color .15s ease, background .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+
+.modal button:not(.briefing-orbs button) { font-weight: 900; }
+
+button:not(.brand):not(.level-card):not(:disabled):hover {
+  border-color: #7be9f6;
+  background: linear-gradient(145deg, #25515d 0%, #10242d 52%, #382927 100%);
+  box-shadow: inset 0 1px #d7faff77, 0 0 14px #42dcf24d, 0 3px 8px #0009;
+  transform: translateY(-1px);
+}
+
+button:not(.brand):not(.level-card):active { transform: translateY(1px); }
+button:focus-visible { outline: 2px solid #f4bd6a; outline-offset: 2px; }
+
+button.selected:not(.level-card),
+button[aria-pressed="true"]:not(.level-card) {
+  border-color: #efb660;
+  background: linear-gradient(145deg, #4d3827 0%, #1c2228 56%, #12333b 100%);
+  color: #fff2d8;
+  box-shadow: inset 0 1px #ffdfaa88, 0 0 12px #f2ad3a44;
+}
+
+button:disabled:not(.level-card) { box-shadow: none; }
+button.danger { border-color: #c05263 !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  button:not(.brand):not(.level-card) { transition: none; }
+  button:not(.brand):not(.level-card):hover,
+  button:not(.brand):not(.level-card):active { transform: none; }
+}
