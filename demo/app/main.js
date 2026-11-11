@@ -15,11 +15,8 @@ let demoRun=null,demoRecords=loadDemoRecords(demoStorage()),lastDemoResult=null,
 function startScoredRun(){demoRun=beginDemoRun(save);lastDemoResult=null;selectedLevel1Layer='tutorial';renderRunPanel();prepareBattle(1)}
 function renderRunPanel(){
   const active=demoRun?.status==='active';
-  $('#runStatus').textContent=active?`RUN IN PROGRESS · LEVEL ${demoRun.nextLevel} OF 3`:demoRun?.status==='ended'?'Scored run ended — start a new run whenever you are ready.':'Clear Levels 1–3 in order. Your best runs stay in this browser.';
+  $('#runStatus').textContent=active?`Level ${demoRun.nextLevel} awaits. Carry the spark onward.`:demoRun?.status==='ended'?'Ready for another run? Three rivals await.':'Take on all three rivals, or choose an unlocked battle below.';
   $('#continueRun').classList.toggle('hidden',!active);$('#continueRun').textContent=active?`CONTINUE LEVEL ${demoRun.nextLevel}`:'CONTINUE RUN';
-  $('#runLiveTime').textContent=formatRunTime(demoRun?.activeTimeMs??0);$('#runLivePx').textContent=`${demoRun?.pxSpent??0} PX`;
-  $('#bestRunTime').textContent=demoRecords.bestFastest?formatRunTime(demoRecords.bestFastest.activeTimeMs):'—';
-  $('#bestRunPx').textContent=demoRecords.bestLowestPx?`${demoRecords.bestLowestPx.pxSpent} PX`:'—';
 }
 function renderDemoResult(result){
   $('#resultRunTime').textContent=formatRunTime(result.activeTimeMs);$('#resultRunPx').textContent=`${result.pxSpent} PX`;$('#resultRunAttempts').textContent=String(result.attempts);
@@ -30,7 +27,7 @@ function renderDemoResult(result){
 function load(){try{const existing=localStorage.getItem(SAVE_KEY);if(existing||localStorage.getItem(`${SAVE_KEY}:backup`))return loadSave(localStorage,SAVE_KEY,createNewSave,migrateSave);const fresh=createNewSave();try{const legacy=JSON.parse(localStorage.getItem(LEGACY_SAVE_KEY)??'null');if(legacy?.settings){const volume=Number(legacy.settings.volume);fresh.settings={...fresh.settings,muted:Boolean(legacy.settings.muted),reducedMotion:Boolean(legacy.settings.reducedMotion),volume:Number.isFinite(volume)?volume:.62,rushMode:Boolean(legacy.settings.rushMode)}}}catch{}return fresh}catch{return createNewSave()}}
 function persist(){try{storeSave(localStorage,SAVE_KEY,save);$('#saveStatus').textContent='AUTOSAVED'}catch{$('#saveStatus').textContent='SAVE FAILED'}setTimeout(()=>$('#saveStatus').textContent='SAVE READY',800);renderShell()}
 async function hydrateRemote(){return}
-function show(name){scene=name;document.body.classList.toggle('battle-circuit',name==='battle');document.body.classList.toggle('motion-reduced',save.settings.reducedMotion);if(name!=='battle')audio.startScene(name);for(const s of scenes)s.classList.toggle('hidden',s.id!==name);if(name!=='shop')shopUi.closePreview(true);if(name==='levels'){renderLevels();renderRunPanel()}if(name==='shop')renderShop();if(name==='trophies')renderTrophies();persist()}
+function show(name){scene=name;const screen=$('#phoneScreen');if(screen)screen.scrollTop=0;document.body.classList.toggle('battle-circuit',name==='battle');document.body.classList.toggle('motion-reduced',save.settings.reducedMotion);if(name!=='battle')audio.startScene(name);for(const s of scenes)s.classList.toggle('hidden',s.id!==name);if(name!=='shop')shopUi.closePreview(true);if(name==='levels'){renderLevels();renderRunPanel()}if(name==='shop')renderShop();if(name==='trophies')renderTrophies();persist()}
 document.querySelectorAll('[data-scene]').forEach(b=>b.onclick=()=>show(b.dataset.scene));
 function renderShell(){$('#wallet').textContent=`${save.px} PX`;$('#reducedMotion').checked=save.settings.reducedMotion;$('#muted').checked=save.settings.muted;$('#rushMode').checked=save.settings.rushMode;$('#volume').value=Math.round(save.settings.volume*100);$('#battleVolume').value=Math.round(save.settings.volume*100);$('#battleMute').textContent=save.settings.muted?'UNMUTE':'MUTE';$('#musicMode').value=save.settings.musicMode;audio.setMode(save.settings.musicMode);audio.setVolume(save.settings.volume);audio.setMuted(save.settings.muted)}
 function janusPrototypeEnabled(n){return n===7&&window.LIGHTNING_QA===true&&window.LIGHTNING_PUBLIC_RELEASE!==true}

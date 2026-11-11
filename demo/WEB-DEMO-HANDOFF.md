@@ -23,6 +23,11 @@ Serve the repository over HTTP and open `/demo/`. The root entry redirects to `/
 - A real 300-PX shop debit is counted during a scored run; a zero-spend completion replaces the lowest-PX record.
 - Independent fastest/lowest-PX personal bests restore after reload.
 - The accessible **Back to Lightning Pong** link returns to the site's homepage.
+- Desktop play is presented inside a scrollable Android-style handset; narrow phones use the game without a second decorative frame.
+- The branded loader exits when module initialization and required visual-image decoding finish, with no minimum display delay. Audio remains player-gesture controlled.
+- A required-asset failure displays an accessible retry control while the unfinished UI stays inert.
+- The in-game level screen has compact Play/Continue actions; the old time/PX/personal-best dashboard was removed.
+- A best result created through game play is displayed correctly by the root website Local Leaderboard.
 
 Synthetic goal tests are state-transition evidence, not a natural player playthrough or proof of balance. No natural full-game victory is claimed.
 
@@ -35,6 +40,7 @@ Synthetic goal tests are state-transition evidence, not a natural player playthr
 5. Added local progression and browser regression checks. Test-only controls are injected into a local intercepted response; they are absent from shipped JavaScript.
 6. Added local three-stage scoring and results; the precise rules and schema are in `RUN-SCORING.md`.
 7. Added a website return link and narrow-header wrapping.
+8. Added the handset/loading presentation and documented the shared localStorage contract in `LOCAL-LEADERBOARD-CONTRACT.md`.
 
 ## Reproduce
 
@@ -54,3 +60,14 @@ The browser check uses the existing bundled Playwright and an isolated headless 
 - Keep production publication gated for Nana's review.
 
 No accounts, score uploads, purchases, external administration, or production deployment were activated.
+
+## Phone-shell verification, November 10, 2026
+
+- 10/10 unit tests passed, including the stable website storage-key contract.
+- 40 JavaScript/MJS files passed syntax checks.
+- 28 browser checks passed. Normal game flow produced zero runtime exceptions, zero missing assets, and zero network writes.
+- A separate expected-404 loading test verified retry handling; a held-image test verified that the loader waits for actual required readiness.
+- The website Local Leaderboard rendered a local best created by the game, using the shared record helper.
+- Reviewed screenshots: `output/playwright/phone-loading.png`, `baseline-level-select.png`, `mobile-battle.png`, and `website-local-leaderboard.png`.
+
+The result paths use synthetic physics goals to verify transitions and persistence. Natural full playthroughs, controller support, and physical-device touch/audio remain unverified.

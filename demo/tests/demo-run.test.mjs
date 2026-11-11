@@ -3,6 +3,10 @@ import assert from 'node:assert/strict';
 import { createNewSave } from '../src/progression/save.js';
 import { beginDemoRun,startDemoAttempt,advanceDemoRun,spendDemoPx,finishDemoAttempt,emptyDemoRecords,updateDemoRecords,loadDemoRecords,storeDemoRecords,formatRunTime,DEMO_RECORDS_KEY } from '../src/progression/demo-run.js';
 const date = new Date('2026-11-10T23:00:00Z');
+test('website leaderboard v1 uses the stable shared browser storage key',()=>{
+  assert.equal(DEMO_RECORDS_KEY,'lightning-pong-web-demo-records-v1');
+  assert.deepEqual(Object.keys(loadDemoRecords(null)).sort(),['bestFastest','bestLowestPx','buildId','rulesetId','schemaVersion']);
+});
 function complete({time=3000,spend=0}={}) {
   const run=beginDemoRun(createNewSave(),date);spendDemoPx(run,spend);
   for(const n of [1,2,3]){startDemoAttempt(run,n);advanceDemoRun(run,time/3);var result=finishDemoAttempt(run,true,date);}

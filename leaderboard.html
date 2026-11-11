@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Local Leaderboard | Lightning Pong</title>
+  <meta name="description" content="Review your locally saved Lightning Pong demo records and prepare for future community comparisons.">
+  <link rel="icon" href="assets/lp-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html"><img src="assets/lp-mark.svg" alt="">Lightning Pong</a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="index.html">Home</a><a href="demo/">3 Lv Demo</a><a href="leaderboard.html" aria-current="page">Local Leaderboard</a><a href="account.html">Player Lab</a><a href="privacy.html">Privacy</a><a href="tester-guide.html">Tester Guide</a><a href="qa.html">Q&amp;A</a><a href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <section class="page-title leaderboard-title"><p class="eyebrow"><span class="status-dot"></span> This browser · this player</p><h1>Local Leaderboard</h1><p>Your completed three-level runs stay on this device. See the records you are chasing now; community comparisons will arrive later as a separate, optional feature.</p><div class="actions"><a class="button primary" href="demo/">Play the 3 Lv Demo</a><button class="button" id="refreshRecords" type="button">Refresh my records</button></div></section>
+    <section class="leaderboard-status" aria-live="polite"><span>LOCAL RECORD STATUS</span><strong id="recordStatus">Checking this browser…</strong></section>
+    <section class="local-record-grid" aria-label="Your local records">
+      <article class="record-card fastest-card"><p class="eyebrow">Fastest clear</p><strong class="record-value" id="fastestTime">—</strong><p id="fastestDetail">Complete a scored three-level run to set this record.</p><time id="fastestDate"></time></article>
+      <article class="record-card efficient-card"><p class="eyebrow">Lowest PX spent</p><strong class="record-value" id="lowestPx">—</strong><p id="lowestDetail">Win all three battles while spending as little PX as possible.</p><time id="lowestDate"></time></article>
+    </section>
+    <section class="section comparison-preview"><div><p class="eyebrow">Coming later</p><h2>Compare without surrendering your save.</h2><p>Your current records are editable local browser data, suitable for personal challenges rather than verified competition. Future community rankings will use an optional Player Passport, a chosen callsign, and separate score-sharing consent.</p></div><div class="comparison-table" aria-label="Future community leaderboard preview"><div class="comparison-row comparison-head"><span>RANK</span><span>CALLSIGN</span><span>RECORD</span></div><div class="comparison-row"><strong>YOU</strong><span>Local player</span><span id="comparisonBest">No clear yet</span></div><div class="comparison-row muted-row"><span>—</span><span>Community comparison</span><span>Coming later</span></div></div></section>
+    <section class="privacy-note"><strong>Nothing uploaded.</strong><span>This page reads Lightning Pong records stored by this browser. It does not send scores, identity, or game data anywhere.</span></section>
+  </main>
+  <footer class="site-footer"><p><strong>Lightning Pong Local Leaderboard</strong></p><p>Personal practice records · No account required · Nothing uploaded</p></footer>
+  <script type="module" src="leaderboard.js"></script>
+</body>
+</html>

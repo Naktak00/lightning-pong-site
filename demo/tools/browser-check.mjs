@@ -7,6 +7,7 @@ import { existsSync } from 'node:fs';
 import { dirname, extname, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
+import { formatRunTime,DEMO_RECORDS_KEY } from '../src/progression/demo-run.js';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const evidence = resolve(root, 'demo/output/playwright');
@@ -45,8 +46,28 @@ await page.route('**/demo/app/main.js*', async route => {
 });
 const record = (name, detail='passed') => { checks.push({name, detail}); console.log(`${name}: ${detail}`); };
 try {
+  const loadingPage=await context.newPage();
+  let releaseAsset;const assetGate=new Promise(resolve=>releaseAsset=resolve);
+  await loadingPage.route('**/assets/arenas/arena-01-first-contact-court.png',async route=>{await assetGate;await route.continue();});
+  await loadingPage.goto(`${base}/demo/app/index.html`,{waitUntil:'commit'});
+  await loadingPage.locator('#loadingScreen').waitFor({state:'visible'});
+  assert.equal(await loadingPage.locator('#app').evaluate(el=>el.inert),true);
+  assert.equal(await loadingPage.locator('.run-panel').count(),0);
+  await loadingPage.screenshot({path:resolve(evidence,'phone-loading.png'),fullPage:true});
+  releaseAsset();await loadingPage.waitForFunction(()=>window.__LP_READY__===true);
+  assert.equal(await loadingPage.locator('#loadingScreen').isVisible(),false);
+  assert.equal(await loadingPage.locator('#app').evaluate(el=>el.inert),false);
+  record('Readiness loader gates input until required assets and modules finish');await loadingPage.close();
+  const failedLoading=await context.newPage();
+  await failedLoading.route('**/assets/arenas/arena-01-first-contact-court.png',route=>route.fulfill({status:404,body:'missing'}));
+  await failedLoading.goto(`${base}/demo/`);await failedLoading.waitForFunction(()=>window.__LP_LOAD_FAILED__===true);
+  assert.equal(await failedLoading.locator('#loadingRetry').isVisible(),true);assert.equal(await failedLoading.locator('#app').evaluate(el=>el.inert),true);
+  record('Failed required asset leaves an accessible retry action');await failedLoading.close();
   await page.goto(`${base}/demo/`);
-  await page.waitForFunction(() => window.__LP_BOOTED__ && window.__DEMO_TEST__);
+  await page.waitForFunction(() => window.__LP_READY__ && window.__DEMO_TEST__);
+  assert.equal(await page.locator('.run-panel,.run-metrics,#bestRunTime,#bestRunPx').count(),0);
+  assert.ok(await page.locator('.phone-device').evaluate(el=>parseFloat(getComputedStyle(el).borderRadius)>0));
+  record('Desktop phone shell displays game actions without a personal-best dashboard');
   if(await page.locator('#dismissReset').isVisible()) await page.locator('#dismissReset').click();
   assert.equal(await page.locator('#levelGrid .level-card').count(),3);
   assert.equal(await page.locator('#levelGrid .level-card').nth(0).isEnabled(),true);
@@ -102,10 +123,10 @@ try {
     assert.equal(await page.locator('#creditsRoll').evaluate(el=>getComputedStyle(el).animationName),'none');
     record('Reduced-motion credits use a stationary readable roll');
   }
-  await page.locator('#creditsLevels').click(); await page.reload();
+  await page.locator('#creditsLevels').click(); await page.reload();await page.waitForFunction(()=>window.__LP_READY__&&window.__DEMO_TEST__);
   assert.deepEqual((await page.evaluate(() => window.__DEMO_TEST__.snapshot())).cleared,[1,2,3]);
   record('Progress survives reload; credits controls work');
-  await page.locator('#startRun').click();await page.locator('#startBriefingBattle').click();await page.reload();
+  await page.locator('#startRun').click();await page.locator('#startBriefingBattle').click();await page.reload();await page.waitForFunction(()=>window.__LP_READY__&&window.__DEMO_TEST__);
   assert.equal(await page.evaluate(()=>window.__DEMO_TEST__.snapshot().run),null);record('Reload ends an unfinished scored run');
   await page.locator('#startRun').click();await page.locator('#startBriefingBattle').click();
   assert.equal((await page.evaluate(()=>window.__DEMO_TEST__.snapshot())).run.nextLevel,1);
@@ -131,7 +152,7 @@ try {
   assert.equal(await page.locator('#resultRunPx').innerText(),'300 PX');
   await page.screenshot({path:resolve(evidence,'scored-run-results.png'),fullPage:true});
   record('Explicit three-stage run shows completion results and captured loadout');
-  await page.locator('#resultLevels').click();await page.reload();
+  await page.locator('#resultLevels').click();await page.reload();await page.waitForFunction(()=>window.__LP_READY__&&window.__DEMO_TEST__);
   const persistedRecord=await page.evaluate(()=>window.__DEMO_TEST__.snapshot());
   assert.equal(persistedRecord.run,null);assert.equal(persistedRecord.records.bestFastest.pxSpent,300);assert.equal(persistedRecord.records.bestLowestPx.pxSpent,300);
   record('Only completed personal bests restore after reload');
@@ -142,10 +163,24 @@ try {
   }
   const zeroRun=await page.evaluate(()=>window.__DEMO_TEST__.snapshot());assert.equal(zeroRun.records.bestLowestPx.pxSpent,0);
   record('A zero-spend clear replaces the local lowest-PX record');
+  const leaderboard=await context.newPage();
+  leaderboard.on('pageerror',e=>errors.push(e.message));
+  leaderboard.on('request',request=>{if(!['GET','HEAD'].includes(request.method()))writes.push(`${request.method()} ${request.url()}`)});
+  await leaderboard.goto(`${base}/leaderboard.html`);
+  await leaderboard.waitForFunction(()=>document.querySelector('#lowestPx')?.textContent==='0 PX');
+  assert.equal(await leaderboard.locator('#fastestTime').innerText(),formatRunTime(zeroRun.records.bestFastest.activeTimeMs));
+  assert.equal(await leaderboard.locator('#lowestPx').innerText(),'0 PX');
+  const sharedRecord=await leaderboard.evaluate(key=>JSON.parse(localStorage.getItem(key)),DEMO_RECORDS_KEY);
+  assert.equal(sharedRecord.schemaVersion,1);assert.equal(sharedRecord.bestLowestPx.verification,'local-practice');
+  await leaderboard.screenshot({path:resolve(evidence,'website-local-leaderboard.png'),fullPage:true});
+  record('Game-created local best renders on the website Local Leaderboard');await leaderboard.close();
   await page.locator('#resultCredits').click();assert.equal(await page.locator('#archiveCredits').isVisible(),true);
   await page.locator('#creditsLevels').click();
   await page.setViewportSize({width:390,height:844});
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),true);
+  assert.equal(await page.locator('.phone-device').evaluate(el=>getComputedStyle(el).borderRadius),'0px');
+  assert.equal(await page.locator('.phone-top').isVisible(),false);
+  record('Small mobile viewport removes the decorative phone frame');
   await page.screenshot({path:resolve(evidence,'mobile-level-select.png'),fullPage:true});
   await page.locator('#levelGrid .level-card').nth(0).click();await page.locator('#startBriefingBattle').click();
   const touchBefore=await page.evaluate(()=>window.__DEMO_TEST__.snapshot().paddleY);
@@ -160,16 +195,17 @@ try {
   const denied=await context.newPage();
   const deniedErrors=[];denied.on('pageerror',e=>deniedErrors.push(e.message));
   await denied.addInitScript(()=>Object.defineProperty(window,'localStorage',{get(){throw new DOMException('Storage unavailable','SecurityError')}}));
-  await denied.goto(`${base}/demo/`);await denied.waitForFunction(()=>window.__LP_BOOTED__);
+  await denied.goto(`${base}/demo/`);await denied.waitForFunction(()=>window.__LP_READY__);
   assert.equal(await denied.locator('#levelGrid .level-card').count(),3);assert.deepEqual(deniedErrors,[]);
   record('Storage-denied browser still boots into guest play');await denied.close();
   assert.deepEqual(errors,[]); assert.deepEqual(missing,[]);assert.deepEqual(writes,[]);
   record('Runtime errors and missing assets','0');
   record('Network writes or score uploads','0');
 } catch(error) {
-  console.error(await page.evaluate(()=>({width:innerWidth,media:matchMedia('(max-width:760px)').matches,nav:{display:getComputedStyle(document.querySelector('nav')).display,wrap:getComputedStyle(document.querySelector('nav')).flexWrap},anchor:{basis:getComputedStyle(document.querySelector('.site-return')).flexBasis},overflow:[...document.querySelectorAll('body *')].filter(el=>{const r=el.getBoundingClientRect();return r.width&&r.right>innerWidth+1}).slice(0,12).map(el=>({tag:el.tagName,id:el.id,className:el.className,right:el.getBoundingClientRect().right,width:el.getBoundingClientRect().width}))})));
+  console.error(error);
+  console.error(await page.evaluate(()=>({width:innerWidth,media:matchMedia('(max-width:760px)').matches,overflow:[...document.querySelectorAll('body *')].filter(el=>{const r=el.getBoundingClientRect();return r.width&&r.right>innerWidth+1}).slice(0,12).map(el=>({tag:el.tagName,id:el.id,className:el.className,right:el.getBoundingClientRect().right,width:el.getBoundingClientRect().width}))})));
   await page.screenshot({path:resolve(evidence,'failure.png'),fullPage:true});
-  console.error(error); checks.push({name:'FAIL',detail:error.message}); process.exitCode=1;
+  checks.push({name:'FAIL',detail:error.message}); process.exitCode=1;
 } finally {
   await writeFile(resolve(evidence,'browser-results.json'),JSON.stringify({checks,errors,missing,writes},null,2));
   await browser.close(); await new Promise(r=>server.close(r));
