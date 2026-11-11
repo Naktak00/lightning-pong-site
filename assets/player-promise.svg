@@ -9,24 +9,24 @@
   </defs>
   <rect width="720" height="170" rx="20" fill="url(#panel)" stroke="#263d58"/>
   <path d="M240 24v122M480 24v122" stroke="#263d58"/>
-  <g transform="translate(44 35)">
+  <g transform="translate(28 35)">
     <path d="M30 4l-20 34h22L20 68l42-43H39L45 4z" fill="#ffd84d" filter="url(#glow)"/>
     <circle cx="68" cy="18" r="7" fill="#ff3f6e"/><circle cx="70" cy="54" r="7" fill="#45a3ff"/>
-    <text x="95" y="30" fill="#edf6ff" font-family="Arial,sans-serif" font-size="28" font-weight="800">9 LEVELS</text>
-    <text x="95" y="54" fill="#a9bdd2" font-family="Arial,sans-serif" font-size="14">Arcade campaign</text>
+    <text x="92" y="30" fill="#edf6ff" font-family="Arial,sans-serif" font-size="24" font-weight="800">9 LEVELS</text>
+    <text x="92" y="54" fill="#a9bdd2" font-family="Arial,sans-serif" font-size="13">Arcade campaign</text>
   </g>
-  <g transform="translate(278 34)">
+  <g transform="translate(248 34)">
     <path d="M42 4a36 36 0 1036 36H64a22 22 0 11-22-22V4z" fill="#39d98a" opacity=".25"/>
     <path d="M42 4v36h36A36 36 0 0042 4z" fill="#39d98a" filter="url(#glow)"/>
     <path d="M29 44l9 9 20-23" fill="none" stroke="#edf6ff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-    <text x="95" y="30" fill="#edf6ff" font-family="Arial,sans-serif" font-size="27" font-weight="800">OFFLINE</text>
-    <text x="95" y="54" fill="#a9bdd2" font-family="Arial,sans-serif" font-size="14">Play after install</text>
+    <text x="94" y="30" fill="#edf6ff" font-family="Arial,sans-serif" font-size="24" font-weight="800">OFFLINE</text>
+    <text x="94" y="54" fill="#a9bdd2" font-family="Arial,sans-serif" font-size="13">Play after install</text>
   </g>
   <g transform="translate(496 34)">
     <rect x="5" y="8" width="72" height="56" rx="9" fill="none" stroke="#45a3ff" stroke-width="6"/>
     <text x="41" y="47" text-anchor="middle" fill="#edf6ff" font-family="Arial,sans-serif" font-size="25" font-weight="900">AD</text>
     <path d="M4 70L80 2" stroke="#ff3f6e" stroke-width="8" stroke-linecap="round" filter="url(#glow)"/>
-    <text x="92" y="30" fill="#edf6ff" font-family="Arial,sans-serif" font-size="24" font-weight="800">NO ADS</text>
-    <text x="92" y="54" fill="#a9bdd2" font-family="Arial,sans-serif" font-size="14">Just the game</text>
+    <text x="92" y="30" fill="#edf6ff" font-family="Arial,sans-serif" font-size="22" font-weight="800">NO ADS</text>
+    <text x="92" y="54" fill="#a9bdd2" font-family="Arial,sans-serif" font-size="13">Just the game</text>
   </g>
 </svg>

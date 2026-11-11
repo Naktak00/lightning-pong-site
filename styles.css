@@ -195,6 +195,26 @@ a {
   border-color: var(--gold);
 }
 
+.button.hero-alpha {
+  background: #ffe45f;
+  color: #171100;
+  border-color: #ffe45f;
+  box-shadow: 0 8px 24px rgba(255, 228, 95, .16);
+}
+
+.button.hero-demo {
+  background: linear-gradient(135deg, #d9ad36, #b98517);
+  color: #170f00;
+  border-color: #e0b94e;
+  box-shadow: 0 8px 24px rgba(201, 154, 32, .18);
+}
+
+.button.hero-alpha:hover,
+.button.hero-demo:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
 main {
   width: min(1120px, calc(100% - 36px));
   margin: 0 auto;
