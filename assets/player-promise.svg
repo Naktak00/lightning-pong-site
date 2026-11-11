@@ -3,30 +3,47 @@
   <desc id="desc">Nine arcade levels, offline play after installation, and no advertising.</desc>
   <defs>
     <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#11243a"/><stop offset="1" stop-color="#091525"/>
+      <stop offset="0" stop-color="#11243a"/>
+      <stop offset="1" stop-color="#091525"/>
     </linearGradient>
-    <filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <linearGradient id="wave" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#18304a" stop-opacity="0"/>
+      <stop offset=".52" stop-color="#18304a" stop-opacity=".3"/>
+      <stop offset="1" stop-color="#18304a" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="yellowGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="pinkGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
   </defs>
-  <rect width="720" height="170" rx="20" fill="url(#panel)" stroke="#263d58"/>
-  <path d="M240 24v122M480 24v122" stroke="#263d58"/>
-  <g transform="translate(28 35)">
-    <path d="M30 4l-20 34h22L20 68l42-43H39L45 4z" fill="#ffd84d" filter="url(#glow)"/>
-    <circle cx="68" cy="18" r="7" fill="#ff3f6e"/><circle cx="70" cy="54" r="7" fill="#45a3ff"/>
-    <text x="92" y="30" fill="#edf6ff" font-family="Arial,sans-serif" font-size="24" font-weight="800">9 LEVELS</text>
-    <text x="92" y="54" fill="#a9bdd2" font-family="Arial,sans-serif" font-size="13">Arcade campaign</text>
+
+  <rect x=".75" y=".75" width="718.5" height="168.5" rx="20" fill="url(#panel)" stroke="#2b4665" stroke-width="1.5"/>
+  <path d="M245 34c55-18 118-12 164-25 47-13 84-11 125 6 44 18 91 9 151-8v35c-60 15-105 22-151 7-42-14-79-13-126 1-48 14-108 14-163 30z" fill="url(#wave)"/>
+  <path d="M259 33v110M480 33v110" stroke="#7890a8" stroke-width=".8" opacity=".78"/>
+
+  <g aria-label="Nine levels">
+    <path d="M43 51h25L55 79h21l-39 42 13-33H27z" fill="#ffd84d" filter="url(#yellowGlow)"/>
+    <circle cx="78" cy="65" r="7" fill="#ff3f6e"/>
+    <circle cx="80" cy="103" r="7" fill="#45a3ff"/>
+    <text x="105" y="79" fill="#edf6ff" font-family="Arial,Helvetica,sans-serif" font-size="28" font-weight="800">9 LEVELS</text>
+    <text x="105" y="103" fill="#a9bdd2" font-family="Arial,Helvetica,sans-serif" font-size="14">Arcade campaign</text>
   </g>
-  <g transform="translate(248 34)">
-    <path d="M42 4a36 36 0 1036 36H64a22 22 0 11-22-22V4z" fill="#39d98a" opacity=".25"/>
-    <path d="M42 4v36h36A36 36 0 0042 4z" fill="#39d98a" filter="url(#glow)"/>
-    <path d="M29 44l9 9 20-23" fill="none" stroke="#edf6ff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-    <text x="94" y="30" fill="#edf6ff" font-family="Arial,sans-serif" font-size="24" font-weight="800">OFFLINE</text>
-    <text x="94" y="54" fill="#a9bdd2" font-family="Arial,sans-serif" font-size="13">Play after install</text>
+
+  <g aria-label="Offline play">
+    <path d="M286 86l13 13 30-35" fill="none" stroke="#edf6ff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="350" y="77" fill="#edf6ff" font-family="Arial,Helvetica,sans-serif" font-size="27" font-weight="800">OFFLINE</text>
+    <text x="350" y="102" fill="#a9bdd2" font-family="Arial,Helvetica,sans-serif" font-size="14">Play after install</text>
   </g>
-  <g transform="translate(496 34)">
-    <rect x="5" y="8" width="72" height="56" rx="9" fill="none" stroke="#45a3ff" stroke-width="6"/>
-    <text x="41" y="47" text-anchor="middle" fill="#edf6ff" font-family="Arial,sans-serif" font-size="25" font-weight="900">AD</text>
-    <path d="M4 70L80 2" stroke="#ff3f6e" stroke-width="8" stroke-linecap="round" filter="url(#glow)"/>
-    <text x="92" y="30" fill="#edf6ff" font-family="Arial,sans-serif" font-size="22" font-weight="800">NO ADS</text>
-    <text x="92" y="54" fill="#a9bdd2" font-family="Arial,sans-serif" font-size="13">Just the game</text>
+
+  <g aria-label="No ads">
+    <rect x="500" y="47" width="76" height="58" rx="9" fill="none" stroke="#45a3ff" stroke-width="6"/>
+    <text x="538" y="86" text-anchor="middle" fill="#edf6ff" font-family="Arial,Helvetica,sans-serif" font-size="25" font-weight="900">AD</text>
+    <path d="M501 111l78-70" stroke="#ff3f6e" stroke-width="9" stroke-linecap="round" filter="url(#pinkGlow)"/>
+    <text x="592" y="72" fill="#edf6ff" font-family="Arial,Helvetica,sans-serif" font-size="24" font-weight="800">NO ADS</text>
+    <text x="592" y="98" fill="#a9bdd2" font-family="Arial,Helvetica,sans-serif" font-size="14">Just the game</text>
   </g>
 </svg>
