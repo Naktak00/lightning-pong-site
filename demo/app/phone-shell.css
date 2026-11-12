@@ -14,6 +14,16 @@ body{background:radial-gradient(ellipse at 50% 15%,#16344a 0%,#091321 36%,#03060
 .device-caption{max-width:760px;margin:0;text-align:center;color:#6d899b;font-size:.68rem;letter-spacing:.025em}
 #app{padding:16px;width:100%;min-height:100%;background:radial-gradient(ellipse at 50% 0,#122039aa,transparent 60%)}
 body.battle-circuit{background:radial-gradient(ellipse at 50% 15%,#16344a 0%,#091321 36%,#03060d 80%)}body.battle-circuit::before{display:none}body.battle-circuit #app{background:#080d16 url('./assets/ui/circuit-base.png') center / cover no-repeat}
+body.battle-circuit .phone-screen{overflow:hidden;scrollbar-width:none}
+body.battle-circuit .phone-screen::-webkit-scrollbar{display:none}
+body.battle-circuit #app{height:100%;min-height:0;overflow:hidden;padding:8px 14px;display:block}
+body.battle-circuit #app>header,body.battle-circuit #app>footer{display:none}
+body.battle-circuit #battle.scene:not(.hidden){height:100%;min-height:0;padding:0;display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:6px;overflow:hidden}
+body.battle-circuit .battle-top{min-height:48px;margin:0;flex-wrap:nowrap}
+body.battle-circuit .arena{align-self:center;justify-self:center;width:auto;height:100%;max-width:100%;max-height:100%;aspect-ratio:16/9;margin:0}
+body.battle-circuit .arena canvas{width:100%;height:100%;aspect-ratio:16/9}
+body.battle-circuit .active-colors{min-height:30px;padding:3px;overflow:hidden}
+@media(min-width:761px){body.battle-circuit .touch{display:none}}
 #app[aria-busy=true]{visibility:hidden}
 .loading-screen{position:absolute;inset:0;z-index:100;display:grid;align-content:center;justify-items:center;gap:14px;text-align:center;padding:28px;background:radial-gradient(ellipse at 50% 40%,#12384b,#050b13 70%)}
 .loading-screen img{width:138px;height:auto;border-radius:20px;box-shadow:0 0 60px #3ab9e51c}
@@ -31,4 +41,5 @@ body.battle-circuit{background:radial-gradient(ellipse at 50% 15%,#16344a 0%,#09
   .shop-grid{grid-template-columns:1fr}.shop-card.prized{grid-column:auto}.preview-drawer{width:min(360px,90cqw)}.settings-card{min-width:0}.settings-card label{font-size:.78rem}.settings-card select{max-width:100%;margin-left:0}.settings-card small{font-size:.68rem}.run-results{padding:18px;margin:24px 0}.run-results h1{font-size:2.4rem}.run-results>p{font-size:.76rem}.run-result-metrics{grid-template-columns:1fr;gap:9px;margin:24px 0}.run-result-metrics div{padding:14px}.run-result-metrics strong{font-size:2rem}.run-actions button{font-size:.68rem;flex:1 1 120px}.credits-logo{width:min(300px,100%)}.credits-window{height:240px}.credits-roll p{font-size:.8rem}.credits-actions button{font-size:.65rem}footer{font-size:.57rem;letter-spacing:.015em}
 }
 @media(max-width:600px),(max-height:600px) and (max-width:1000px){body{padding:0}.demo-stage{display:block}.device-kicker,.device-caption,.phone-top,.phone-nav{display:none}.phone-device{width:100%;height:auto;min-height:100dvh;border:0;border-radius:0;padding:0;background:none;box-shadow:none}.phone-device::before,.phone-device::after{display:none}.phone-bezel{height:auto;min-height:100dvh;border:0;border-radius:0;overflow:visible}.phone-screen{overflow:visible;min-height:100dvh;transform:none}.loading-screen{position:fixed}.phone-screen>#app{min-height:100dvh}}
+@media(max-width:760px){body.battle-circuit #battle.scene:not(.hidden){position:relative}body.battle-circuit .touch{display:grid;position:absolute;left:14px;bottom:14px;width:180px;z-index:10;opacity:.75}body.battle-circuit .touch button{min-height:44px;background:#111936cc;backdrop-filter:blur(3px)}}
 @media(prefers-reduced-motion:reduce){.phone-screen{scroll-behavior:auto}.loading-screen *{animation:none!important;transition:none!important}}

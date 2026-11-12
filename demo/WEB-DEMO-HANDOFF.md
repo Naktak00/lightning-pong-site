@@ -76,5 +76,6 @@ The result paths use synthetic physics goals to verify transitions and persisten
 
 - Desktop gameplay now uses a landscape Android-style shell; small screens still remove the decorative frame and use the available viewport.
 - The website Local Leaderboard uses a separate portrait phone presentation and continues to read only local browser records.
-- Local co-op is an unranked two-player mode: the left paddle uses `W` / `D`, and the right paddle uses `ArrowUp` / `ArrowDown`.
+- Local co-op is an unranked two-player mode: the left paddle uses `W` / `S`, and the right paddle uses `ArrowUp` / `ArrowDown`.
+- Co-op opens with a frozen five-second countdown. During active gameplay, the virtual phone screen is fixed and non-scrolling so the full arena remains visible.
 - Co-op results do not update campaign progression, PX, fastest-clear records, or lowest-PX records.
