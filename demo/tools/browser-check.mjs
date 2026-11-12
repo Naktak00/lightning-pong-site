@@ -36,7 +36,7 @@ page.on('request', request => { if(!['GET','HEAD'].includes(request.method())) w
 page.on('pageerror', e => errors.push(e.message));
 page.on('response', response => { if(response.status() >= 400 && !response.url().endsWith('favicon.ico')) missing.push(`${response.status()} ${response.url()}`); });
 const hook = `\nwindow.__DEMO_TEST__ = {
-  snapshot: () => ({ scene, level, paused, audioMenuOpen, resultApplied, elapsed:typeof battleElapsedMs==='undefined'?performance.now()-battleStartedAt:battleElapsedMs, phase:state?.match.phase, lives:state?.match.lives, ball:state?{...state.ball}:null, paddleY:state?.paddles.player1.y, audioContext:audio.context?.state, audioMediaError:audio.verbosePlayer.error?.code??null, px:save.px, cleared:[...save.clearedLevels], matches:save.stats.matches, run:typeof demoRun==='undefined'?null:structuredClone(demoRun), records:typeof demoRecords==='undefined'?null:structuredClone(demoRecords), result:typeof lastDemoResult==='undefined'?null:structuredClone(lastDemoResult) }),
+  snapshot: () => ({ scene, level, battleMode, paused, audioMenuOpen, resultApplied, elapsed:typeof battleElapsedMs==='undefined'?performance.now()-battleStartedAt:battleElapsedMs, phase:state?.match.phase, lives:state?.match.lives, ball:state?{...state.ball}:null, paddleY:state?.paddles.player1.y, paddle2Y:state?.paddles.player2.y, audioContext:audio.context?.state, audioMediaError:audio.verbosePlayer.error?.code??null, px:save.px, cleared:[...save.clearedLevels], matches:save.stats.matches, run:typeof demoRun==='undefined'?null:structuredClone(demoRun), records:typeof demoRecords==='undefined'?null:structuredClone(demoRecords), result:typeof lastDemoResult==='undefined'?null:structuredClone(lastDemoResult) }),
   goal: concededBy => { state.match.phase='playing'; state.ball.y=-200; state.ball.vy=0; state.ball.vx=concededBy==='player1'?-500:500; state.ball.x=concededBy==='player1'?-100:state.width+100; tick(TUNING.fixedStepSeconds); },
   saveKey: SAVE_KEY,
 };`;
@@ -74,6 +74,25 @@ try {
   assert.equal(await page.locator('#levelGrid .level-card').nth(1).isEnabled(),false);
   record('HTTP boot and three-stage gate');
   await page.screenshot({path:resolve(evidence,'baseline-level-select.png'), fullPage:true});
+  await page.locator('#startCoop').click();
+  await page.waitForFunction(() => window.__DEMO_TEST__.snapshot().scene==='battle');
+  const coopStart=await page.evaluate(()=>window.__DEMO_TEST__.snapshot());
+  assert.equal(coopStart.battleMode,'coop');assert.equal(coopStart.run,null);
+  await page.keyboard.down('w');await page.waitForTimeout(100);await page.keyboard.up('w');
+  const coopLeftUp=await page.evaluate(()=>window.__DEMO_TEST__.snapshot());assert.ok(coopLeftUp.paddleY<coopStart.paddleY);
+  await page.keyboard.down('d');await page.waitForTimeout(140);await page.keyboard.up('d');
+  const coopLeftDown=await page.evaluate(()=>window.__DEMO_TEST__.snapshot());assert.ok(coopLeftDown.paddleY>coopLeftUp.paddleY);
+  await page.keyboard.down('ArrowUp');await page.waitForTimeout(100);await page.keyboard.up('ArrowUp');
+  const coopRightUp=await page.evaluate(()=>window.__DEMO_TEST__.snapshot());assert.ok(coopRightUp.paddle2Y<coopLeftDown.paddle2Y);
+  await page.keyboard.down('ArrowDown');await page.waitForTimeout(140);await page.keyboard.up('ArrowDown');
+  const coopRightDown=await page.evaluate(()=>window.__DEMO_TEST__.snapshot());assert.ok(coopRightDown.paddle2Y>coopRightUp.paddle2Y);
+  assert.equal(coopRightDown.records.bestFastest,null);assert.equal(coopRightDown.records.bestLowestPx,null);
+  await page.screenshot({path:resolve(evidence,'local-coop-landscape.png'),fullPage:true});
+  for(let n=0;n<3;n++)await page.evaluate(()=>window.__DEMO_TEST__.goal('player2'));
+  const coopFinished=await page.evaluate(()=>window.__DEMO_TEST__.snapshot());assert.equal(coopFinished.resultApplied,true);assert.equal(coopFinished.records.bestFastest,null);assert.equal(coopFinished.records.bestLowestPx,null);
+  assert.match(await page.locator('#battleOverlay strong').textContent(),/PLAYER 1 WINS/);assert.equal(await page.locator('#coopActions').isVisible(),true);
+  record('Local co-op uses W/D and Up/Down without creating ranked records');
+  await page.locator('#leaveCoop').click();
   await page.locator('#levelGrid .level-card').nth(0).click();
   await page.locator('#startBriefingBattle').click();
   await page.waitForFunction(() => window.__DEMO_TEST__.snapshot().scene==='battle');

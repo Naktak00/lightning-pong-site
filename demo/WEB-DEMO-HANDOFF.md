@@ -71,3 +71,10 @@ No accounts, score uploads, purchases, external administration, or production de
 - Reviewed screenshots: `output/playwright/phone-loading.png`, `baseline-level-select.png`, `mobile-battle.png`, and `website-local-leaderboard.png`.
 
 The result paths use synthetic physics goals to verify transitions and persistence. Natural full playthroughs, controller support, and physical-device touch/audio remain unverified.
+
+## Landscape and co-op pass, November 11, 2026
+
+- Desktop gameplay now uses a landscape Android-style shell; small screens still remove the decorative frame and use the available viewport.
+- The website Local Leaderboard uses a separate portrait phone presentation and continues to read only local browser records.
+- Local co-op is an unranked two-player mode: the left paddle uses `W` / `D`, and the right paddle uses `ArrowUp` / `ArrowDown`.
+- Co-op results do not update campaign progression, PX, fastest-clear records, or lowest-PX records.
