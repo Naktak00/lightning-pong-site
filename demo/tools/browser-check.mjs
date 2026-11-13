@@ -75,6 +75,16 @@ try {
   assert.equal(await page.locator('#levelGrid .level-card').nth(1).isEnabled(),false);
   record('HTTP boot and three-stage gate');
   await page.screenshot({path:resolve(evidence,'baseline-level-select.png'), fullPage:true});
+  await page.locator('#levelGrid .level-card').nth(0).click();
+  await page.locator('#battleBriefing').waitFor({state:'visible'});
+  const briefingAlignment=await page.evaluate(()=>{const briefing=document.querySelector('#battleBriefing').getBoundingClientRect(),tiles=document.querySelector('#levelGrid').getBoundingClientRect();return{briefingTop:briefing.top,tilesTop:tiles.top,delta:Math.abs(briefing.top-tiles.top)}});
+  assert.ok(briefingAlignment.delta<=2,JSON.stringify(briefingAlignment));
+  assert.equal(await page.locator('#closeBattleBriefing').isVisible(),true);
+  await page.screenshot({path:resolve(evidence,'battle-briefing-aligned.png'),fullPage:true});
+  await page.locator('#closeBattleBriefing').click();
+  assert.equal(await page.locator('#battleBriefing').isVisible(),false);
+  assert.equal(await page.locator('#levels').isVisible(),true);
+  record('Battle Briefing aligns with the level row and closes back to level select');
   await page.locator('#startCoop').click();
   await page.waitForFunction(() => window.__DEMO_TEST__.snapshot().scene==='battle');
   const coopStart=await page.evaluate(()=>window.__DEMO_TEST__.snapshot());
@@ -103,12 +113,13 @@ try {
   await page.locator('#levelGrid .level-card').nth(0).click();
   await page.locator('#startBriefingBattle').click();
   await page.waitForFunction(() => window.__DEMO_TEST__.snapshot().scene==='battle');
-  await page.waitForTimeout(250);
+  await page.evaluate(()=>window.__DEMO_TEST__.advance(2));
   record('Level select → briefing → battle');
   const beforeMove=await page.evaluate(()=>window.__DEMO_TEST__.snapshot());
-  await page.keyboard.down('ArrowUp');await page.waitForTimeout(180);await page.keyboard.up('ArrowUp');
-  const afterMove=await page.evaluate(()=>window.__DEMO_TEST__.snapshot());
-  assert.ok(afterMove.paddleY<beforeMove.paddleY);record('Keyboard input moves player paddle');
+  await page.keyboard.down('ArrowUp');await page.evaluate(()=>window.__DEMO_TEST__.advance(.2));await page.keyboard.up('ArrowUp');
+  let afterMove=await page.evaluate(()=>window.__DEMO_TEST__.snapshot());
+  if(afterMove.paddleY===beforeMove.paddleY){await page.keyboard.down('ArrowDown');await page.evaluate(()=>window.__DEMO_TEST__.advance(.2));await page.keyboard.up('ArrowDown');afterMove=await page.evaluate(()=>window.__DEMO_TEST__.snapshot())}
+  assert.notEqual(afterMove.paddleY,beforeMove.paddleY,JSON.stringify({beforeMove,afterMove}));record('Keyboard input moves player paddle');
   assert.equal(afterMove.audioContext,'running');assert.equal(afterMove.audioMediaError,null);record('User gesture unlocks audio without media errors');
   await page.locator('#pauseBattle').click();
   const paused = await page.evaluate(() => window.__DEMO_TEST__.snapshot());

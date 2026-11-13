@@ -23,3 +23,12 @@ body.battle-circuit #app{position:relative;z-index:1}
 @keyframes circuit-breath{0%,100%{opacity:0}50%{opacity:1}}
 body.battle-circuit.motion-reduced::before{animation:none;opacity:0}
 @media(prefers-reduced-motion:reduce){body.battle-circuit::before{animation:none;opacity:0}}
+
+/* Keep the Battle Briefing aligned with the level-card row instead of the viewport. */
+#app{position:relative}
+#battleBriefing.modal{position:absolute;inset:auto 18px auto;display:block;width:auto;padding:0;background:transparent;place-items:initial}
+#battleBriefing.modal>div{position:relative;width:100%;max-height:min(430px,70cqh);border-color:#5edcff;box-shadow:0 20px 55px #000c}
+.briefing-close{position:absolute;right:10px;top:10px;z-index:2;display:grid;place-items:center;width:32px;height:32px;padding:0;border:1px solid #52669a;border-radius:50%;background:#10172e;color:#dce8ff;font-size:1.15rem;line-height:1}
+.briefing-close:hover,.briefing-close:focus-visible{border-color:#ffe34f;color:#ffe34f;outline:2px solid #ffe34f55}
+.briefing-panel>small,.briefing-panel>h2{padding-right:38px}
+@media(max-width:760px){#battleBriefing.modal{inset-inline:10px}#battleBriefing.modal>div{padding:18px}}
