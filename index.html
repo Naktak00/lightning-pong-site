@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lightning Pong | Arcade momentum, one spark at a time</title>
+  <title>Lightning Pong | Play the browser demo</title>
   <meta name="description" content="Lightning Pong is an offline-first Android arcade game in closed alpha, with a three-level browser demo and optional player profiles in development.">
   <link rel="icon" href="assets/lp-mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
@@ -13,8 +13,8 @@
     <a class="brand" href="index.html"><img src="assets/lp-mark.svg" alt="">Lightning Pong</a>
     <nav class="nav" aria-label="Main navigation">
       <a href="index.html" aria-current="page">Home</a>
-      <a href="demo/">3 Lv Demo</a>
-      <a href="leaderboard.html">Local Leaderboard</a>
+      <a href="demo/">Browser Demo</a>
+      <a href="leaderboard.html">Local Scores</a>
       <a href="account.html">Player Lab</a>
       <a href="privacy.html">Privacy</a>
       <a href="tester-guide.html">Tester Guide</a>
@@ -27,13 +27,12 @@
     <section class="hero hero-home">
       <div class="hero-copy">
         <p class="eyebrow"><span class="status-dot"></span> v0.2 closed alpha · Android</p>
-        <h1>Catch the spark.<br><span>Control the chaos.</span></h1>
-        <p>Lightning Pong is a fast, colorful arcade challenge built around split-second saves, PX progression, and nine increasingly unruly levels.</p>
+        <h1>Lightning Pong</h1>
+        <p>Play three levels free in your browser. The Android closed alpha has nine levels, offline play after installation, and no ads.</p>
         <div class="actions">
-          <a class="button hero-alpha" href="tester-guide.html">Enter the closed alpha</a>
-          <a class="button hero-demo" href="demo/">Explore the 3-level demo</a>
+          <a class="button hero-demo" href="demo/">Play the browser demo</a>
+          <a class="button hero-alpha" href="tester-guide.html">Join the Android closed alpha</a>
         </div>
-        <img class="player-promise" src="assets/player-promise.png" alt="Nine arcade levels, offline play after installation, and no ads">
       </div>
       <div class="arena-card" aria-label="Stylized Lightning Pong arena">
         <div class="arena-grid"></div><div class="paddle paddle-left"></div><div class="paddle paddle-right"></div>
@@ -42,41 +41,21 @@
       </div>
     </section>
 
-    <section class="signal-strip" aria-label="Project status">
-      <div><span>PLAY NOW</span><strong>Android closed alpha</strong></div>
-      <div><span>PLAY IN BROWSER</span><strong>3-level demo</strong></div>
-      <div><span>LATEST BUILD</span><strong>Player identity foundation</strong></div>
-    </section>
-
     <section class="story-section" id="demo">
-      <div class="section-heading"><p class="eyebrow">Play in your browser</p><h2>Three levels. No account wall.</h2><p>Jump straight into a free three-level challenge without an account. Clear the run as quickly as you can—or spend as little PX as possible—and keep your best result on this device.</p></div>
-      <div class="feature-grid">
-        <article class="feature-card blue"><span class="feature-number">01</span><h3>Instant play</h3><p>No registration and no installation. Open the demo, read the controls, and enter the arena.</p></article>
-        <article class="feature-card green"><span class="feature-number">02</span><h3>Two ways to climb</h3><p>Race for the fastest clear—or prove your control by winning with the lowest PX spent. Different styles, equal bragging rights.</p></article>
-        <article class="feature-card pink"><span class="feature-number">03</span><h3>Keep your best</h3><p>Your fastest clear and lowest-PX result stay on this device. A Player Passport is optional and is not required for the demo.</p></article>
-      </div>
-      <div class="demo-gate"><div><span class="pill">PLAYABLE PREVIEW</span><h3>The browser arena is open.</h3><p>Three handcrafted levels, instant play, and a clean restart whenever you want another shot at your best run.</p></div><a class="button primary" href="demo/">Play the 3 Lv Demo</a></div>
-    </section>
-
-    <section class="story-section account-story">
-      <div class="section-heading"><p class="eyebrow">Your optional player identity</p><h2>A passport, not a toll booth.</h2><p>Play first. If you want to keep your progress or join the community, create a private Player Passport later. Invitations will open gradually while we make sure every choice is clear.</p></div>
-      <div class="account-preview">
-        <div class="passport-card"><div class="passport-top"><span>LIGHTNING PONG</span><span>PLAYER PASSPORT</span></div><div class="passport-body"><img src="assets/lp-mark.svg" alt="Lightning Pong emblem"><div><span>CALLSIGN</span><strong>Your name here</strong><span>ACCESS</span><strong>Invitation only</strong></div></div><div class="passport-code">LP · PX · 13+ · PRIVATE BY DEFAULT</div></div>
-        <div class="account-points"><p><span>✓</span> Choose Google or an email magic link</p><p><span>✓</span> Decide separately whether scores go public</p><p><span>✓</span> Keep playing without creating a profile</p><p><span>✓</span> Export or delete your account when controls open</p><a class="button" href="account.html">Preview your Player Passport</a></div>
+      <div class="section-heading">
+        <h2>Browser demo scores</h2>
+        <p>Race for the fastest clear or win with the least PX spent. Your best scores are saved on this device. No account needed.</p>
+        <a class="button" href="leaderboard.html">View local scores</a>
       </div>
     </section>
 
-    <section class="story-section build-log">
-      <div class="section-heading"><p class="eyebrow">Your road into the arena</p><h2>Start where you want.</h2></div>
-      <ol class="timeline">
-        <li><time>NOW</time><div><strong>Join the Android closed alpha</strong><p>Play all nine current levels offline and help find the moments that need one more spark of polish.</p></div></li>
-        <li><time>NOW</time><div><strong>Try the three-level browser demo</strong><p>Enter the arena and chase a better run—no installation or account required.</p></div></li>
-        <li><time>LATER</time><div><strong>Claim a Player Passport</strong><p>Save progress across sessions, request alpha access, and choose whether your approved scores join the leaderboard.</p></div></li>
-      </ol>
+    <section class="story-section">
+      <div class="section-heading">
+        <h2>Level 11 challenge</h2>
+        <p>When Level 11 becomes available, the first player to clear it will be asked to help create Level 12.</p>
+      </div>
     </section>
-
-    <section class="closing-cta"><p class="eyebrow">Built in public, released with care</p><h2>Lightning Pong is learning how to travel.</h2><p>Play the browser preview now, then follow the Android journey. Your progress should move only when you ask it to.</p><div class="actions"><a class="button primary" href="demo/">Play the browser demo</a><a class="button" href="tester-guide.html">Read the tester guide</a><a class="button" href="privacy.html">See the privacy promise</a></div></section>
   </main>
-  <footer class="site-footer"><p><strong>Lightning Pong</strong> · v0.2 Closed Alpha</p><p>Offline-first Android arcade action with a playable three-level browser preview.</p></footer>
+  <footer class="site-footer"><p><strong>Lightning Pong</strong> · v0.2 Closed Alpha</p></footer>
 </body>
 </html>
