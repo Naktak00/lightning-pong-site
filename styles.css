@@ -12,6 +12,7 @@
   --red: #ff3f6e;
   --shadow: rgba(0, 0, 0, 0.28);
 }
+.hidden{display:none!important}
 
 * {
   box-sizing: border-box;
