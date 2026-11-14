@@ -22,9 +22,15 @@ test('launch gate points early visitors to rules and active visitors to the game
 
 test('Passport and game keep campaign runs authenticated and separate', async () => {
   const account = await read('account.html');
+  const accountScript = await read('account.js');
   const client = await read('demo/app/campaign-client.js');
   assert.match(account, /joinCampaignForm/);
   assert.match(account, /promoForm/);
+  assert.match(account, /discordSignIn/);
+  assert.match(account, /campaignConsent/);
+  assert.doesNotMatch(account, /guardianConfirm|rulesConfirm|Ollama/i);
+  assert.match(accountScript, /oauth\('discord'\)/);
+  assert.match(accountScript, /lightning-pong-web-demo-save-v1/);
   assert.match(client, /begin_flash_campaign_run/);
   assert.match(client, /complete_flash_campaign_run/);
   assert.match(client, /getSession/);

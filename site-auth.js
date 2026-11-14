@@ -23,5 +23,23 @@
     return null;
   }
 
-  window.LPAuth = Object.freeze({ available, client, session, requireSession, config });
+  function displayName(user) {
+    const emailName = user?.email?.split('@')[0];
+    return emailName || user?.user_metadata?.display_name || user?.user_metadata?.full_name || user?.user_metadata?.name || 'Passport';
+  }
+
+  function paintPassportNavigation(currentSession) {
+    const name = currentSession?.user ? displayName(currentSession.user) : 'Passport';
+    document.querySelectorAll('[data-passport-nav]').forEach(link => {
+      link.textContent = name;
+      link.title = currentSession?.user ? `Open ${name}'s Player Passport` : 'Open Player Passport';
+    });
+  }
+
+  if (client) {
+    client.auth.getSession().then(({ data }) => paintPassportNavigation(data.session));
+    client.auth.onAuthStateChange((_event, currentSession) => paintPassportNavigation(currentSession));
+  } else paintPassportNavigation(null);
+
+  window.LPAuth = Object.freeze({ available, client, session, requireSession, displayName, config });
 })();
