@@ -4,7 +4,7 @@
   const SAVE_KEY = 'lightning-pong-web-demo-save-v1';
   const RECORDS_KEY = 'lightning-pong-web-demo-records-v1';
   const setNotice = (text, bad = false) => { $('#authNotice').textContent = text; $('#authNotice').classList.toggle('error', bad); };
-  const show = (selector, on = true) => $(selector)?.classList.toggle('hidden', !on);
+  const show = (selector, on = true) => { const element = $(selector); if (!element) return; element.hidden = !on; element.classList.toggle('hidden', !on); };
   const whole = value => Math.max(0, Math.floor(Number(value) || 0));
   const formatTime = ms => { if (!Number.isFinite(Number(ms)) || Number(ms) <= 0) return '—'; const cs = Math.floor(Number(ms) / 10); return `${Math.floor(cs / 6000)}:${String(Math.floor(cs / 100) % 60).padStart(2, '0')}.${String(cs % 100).padStart(2, '0')}`; };
 
