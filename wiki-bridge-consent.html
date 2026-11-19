@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <title>Velvet Room Wiki Access</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="callback-shell" id="wikiConsent" data-client-id="205cadfc-19d1-4936-abe0-514a4fc7208f" data-redirect-uri="https://chatgpt.com/connector/oauth/kt9QhNqrSNM1">
+    <h1>Velvet Room Wiki access</h1>
+    <p id="consentStatus" role="status">Checking the authorization request…</p>
+    <a id="consentSignIn" href="account.html" target="_blank" rel="noopener noreferrer" hidden>Open existing Lightning Pong sign-in</a>
+    <section id="consentDetails" hidden>
+      <p>ChatGPT will be able to read and edit pages in the private Midnight MN Velvet Room Wiki.</p>
+      <p>Signed in as <span id="consentAccount"></span>.</p>
+      <p>Returning to <span id="consentDestination"></span>.</p>
+      <button type="button" class="button primary" id="consentApprove">Approve Wiki access</button>
+      <button type="button" class="button" id="consentDeny">Deny</button>
+    </section>
+  </main>
+  <script src="vendor/supabase.js"></script>
+  <script src="supabase-config.js"></script>
+  <script src="site-auth.js"></script>
+  <script src="wiki-bridge-consent.js"></script>
+</body>
+</html>
