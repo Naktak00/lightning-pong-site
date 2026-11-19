@@ -48,10 +48,16 @@
       return;
     }
     if (data.authorization_id !== authorizationId || data.client?.id !== clientId ||
-        !callbackMatches(data.redirect_uri) || String(data.scope ?? '').trim() !== 'openid') {
+        !callbackMatches(data.redirect_uri)) {
       throw new Error('This request does not match the dedicated Velvet Room client.');
     }
+    const scopes = new Set(String(data.scope ?? '').trim().split(/\s+/));
+    if (!scopes.has('openid') || [...scopes].some((scope) => !['openid', 'email', 'offline_access'].includes(scope))) {
+      throw new Error('This request asks for permissions Velvet Quill does not allow.');
+    }
     element('consentAccount').textContent = session.user.email || 'your Lightning Pong account';
+    element('consentEmailScope').hidden = !scopes.has('email');
+    element('consentRefreshScope').hidden = !scopes.has('offline_access');
     element('consentDestination').textContent = 'ChatGPT';
     status.textContent = 'Review the request before approving.';
     details.hidden = false;

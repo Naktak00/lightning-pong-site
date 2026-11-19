@@ -16,6 +16,8 @@
     <section id="consentDetails" hidden>
       <p>ChatGPT will be able to read and edit pages in the private Midnight MN Velvet Room Wiki.</p>
       <p>Signed in as <span id="consentAccount"></span>.</p>
+      <p id="consentEmailScope" hidden>ChatGPT requests your Player Passport email address.</p>
+      <p id="consentRefreshScope" hidden>ChatGPT requests permission to keep this Wiki connection active after the current session.</p>
       <p>Returning to <span id="consentDestination"></span>.</p>
       <button type="button" class="button primary" id="consentApprove">Approve Wiki access</button>
       <button type="button" class="button" id="consentDeny">Deny</button>
@@ -24,6 +26,6 @@
   <script src="vendor/supabase.js"></script>
   <script src="supabase-config.js"></script>
   <script src="site-auth.js"></script>
-  <script src="wiki-bridge-consent.js"></script>
+  <script src="wiki-bridge-consent.js?v=2"></script>
 </body>
 </html>
