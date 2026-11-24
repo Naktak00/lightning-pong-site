@@ -138,6 +138,11 @@ a {
   background: var(--panel-2);
 }
 
+.nav-closed {
+  color: #ff7188;
+  white-space: nowrap;
+}
+
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(240px, 0.7fr);
@@ -324,8 +329,6 @@ main {
 .leaderboard-phone-nav span { width: 100px; height: 4px; border-radius: 9px; background: #667b87; }
 .leaderboard-page .site-header { position: sticky; top: 0; z-index: 5; padding: 16px 18px; background: #07111ef2; backdrop-filter: blur(12px); }
 .leaderboard-page .brand { font-size: .9rem; }
-.leaderboard-page .nav { gap: 5px; }
-.leaderboard-page .nav a { padding: 7px 8px; font-size: .66rem; }
 .leaderboard-page main { padding: 22px 20px 30px; }
 .leaderboard-page .page-title { padding: 18px 0 10px; }
 .leaderboard-page .page-title h1 { font-size: clamp(2.5rem,12vw,4.4rem); }

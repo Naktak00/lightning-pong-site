@@ -5,19 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Q&A | Lightning Pong</title>
   <meta name="description" content="Lightning Pong Closed Alpha questions and troubleshooting.">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
   <header class="site-header">
     <a class="brand" href="index.html"><img src="assets/lp-mark.svg" alt="">Lightning Pong</a>
     <nav class="nav" aria-label="Main navigation">
       <a href="index.html">Home</a>
-      <a href="demo/">3 Lv Demo</a>
-      <a href="leaderboard.html">Local Leaderboard</a>
-      <a href="account.html">Player Lab</a>
+      <a href="campaign.html">Flash Campaign <span class="nav-closed">[Closed]</span></a>
+      <a href="demo/">Browser Demo</a>
+      <a href="leaderboard.html">Local Scores</a>
+      <a href="account.html" data-passport-nav>Passport</a>
       <a href="privacy.html">Privacy</a>
       <a href="tester-guide.html">Tester Guide</a>
-      <a href="qa.html" aria-current="page">Q&A</a>
+      <a href="qa.html" aria-current="page">Q&amp;A</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
@@ -71,5 +72,6 @@
   <footer class="site-footer">
     <p>Lightning Pong v0.2 Closed Alpha support page.</p>
   </footer>
+  <script src="vendor/supabase.js"></script><script src="supabase-config.js"></script><script src="site-auth.js?v=2"></script>
 </body>
 </html>
