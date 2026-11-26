@@ -30,7 +30,7 @@
       if (game.hasAttribute('src')) return;
 
       status.textContent = 'Loading the private build…';
-      const registration = await navigator.serviceWorker.register('game/access-worker.js');
+      const registration = await navigator.serviceWorker.register('game/access-worker.js?v=2');
       const ready = registration.active || await new Promise((resolve, reject) => {
         const worker = registration.installing || registration.waiting;
         if (!worker) return reject(new Error('Missing playtest worker'));
@@ -67,7 +67,7 @@
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.addEventListener('message', async event => {
       if (event.data !== 'lp-private-session' || !event.ports[0]) return;
-      const expected = new URL('game/access-worker.js', location.href);
+      const expected = new URL('game/access-worker.js?v=2', location.href);
       if (event.source?.scriptURL !== expected.href) return;
       try {
         const session = authorized ? await auth.session() : null;

@@ -26,7 +26,7 @@ const bundle = Buffer.concat([size, encodedIndex, ...contents]);
 let downloads = 0;
 const server = createServer(async (req, res) => {
   const { pathname } = new URL(req.url, 'http://localhost');
-  if (pathname === '/storage/v1/object/authenticated/lp-private-playtest/game-v1.bin') {
+  if (pathname === '/storage/v1/object/authenticated/lp-private-playtest/game-v2.bin') {
     if (req.headers.authorization !== 'Bearer dev-fixture') return res.writeHead(403).end();
     downloads++;
     return res.writeHead(200).end(bundle);

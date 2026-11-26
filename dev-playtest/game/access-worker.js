@@ -4,7 +4,7 @@ importScripts('../../supabase-config.js');
 const { url: projectUrl, publishableKey } = self.LP_SUPABASE_CONFIG;
 const scope = new URL(self.registration.scope);
 const launchers = [new URL('../', scope).href, new URL('../index.html', scope).href];
-const bundleUrl = `${projectUrl}/storage/v1/object/authenticated/lp-private-playtest/game-v1.bin`;
+const bundleUrl = `${projectUrl}/storage/v1/object/authenticated/lp-private-playtest/game-v2.bin`;
 const types = {
   html: 'text/html', js: 'text/javascript', css: 'text/css', json: 'application/json',
   png: 'image/png', webp: 'image/webp', jpg: 'image/jpeg', svg: 'image/svg+xml',
