@@ -1,0 +1,16 @@
+.playtest {
+  width: min(100% - 2rem, 90rem);
+  margin: 1rem auto;
+}
+.playtest h1 {
+  margin: 0.5rem 0;
+}
+.playtest iframe {
+  display: block;
+  width: 100%;
+  height: 85dvh;
+  border: 0;
+}
+.playtest iframe[hidden] {
+  display: none;
+}

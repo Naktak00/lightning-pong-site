@@ -35,11 +35,16 @@
   async function refresh() {
     if (!auth?.client) { setNotice('Passport sign-in is being connected. The campaign page and local demo remain available.', true); $('#magicLinkForm button').disabled = true; return; }
     const { data: { session } } = await auth.client.auth.getSession(); const user = session?.user;
-    show('#signInPanel', !user); for (const id of ['#passportPanel', '#campaignPanel', '#promoPanel', '#activityPanel']) show(id, Boolean(user));
+    show('#developerPlaytestLink', false); show('#signInPanel', !user); for (const id of ['#passportPanel', '#campaignPanel', '#promoPanel', '#activityPanel']) show(id, Boolean(user));
     if (!user) { setNotice('Sign in to enter verified prize runs or submit a promotional short.'); return; }
     setNotice('Passport online. Your private campaign tools are ready.'); $('#passportEmail').textContent = user.email || '';
     const { data: profile } = await auth.client.from('profiles').select('display_name,account_role').eq('user_id', user.id).maybeSingle();
     $('#passportName').textContent = profile?.display_name || auth.displayName(user); $('#passportRole').textContent = profile?.account_role || 'player'; show('#reviewLink', ['developer', 'reviewer'].includes(profile?.account_role));
+    if (user.email?.toLowerCase() === 'frimzilla@gmail.com') {
+      const { data: permitted } = await auth.client.rpc('can_access_lp_private_playtest');
+      const current = await auth.session();
+      show('#developerPlaytestLink', permitted === true && current?.user.id === user.id);
+    }
     const joined = await campaignMembership(user); show('#joinCampaignForm', !joined); show('#campaignAccepted', joined); renderPersonalScores();
   }
   $('#magicLinkForm').onsubmit = async event => { event.preventDefault(); const email = $('#emailInput').value.trim(); const { error } = await auth.client.auth.signInWithOtp({ email, options: { emailRedirectTo: new URL('auth-callback.html', location.href).href } }); setNotice(error ? error.message : 'Check your email for your one-time Passport link.', Boolean(error)); };
@@ -51,5 +56,5 @@
   $('#joinCampaignForm').onsubmit = async event => { event.preventDefault(); const age = $('#ageStatus').value; if (!$('#campaignConsent').checked) return setNotice('Confirm the campaign agreement before entering.', true); const { error } = await auth.client.rpc('join_flash_campaign', { p_campaign_slug: 'flash-2026', p_age_status: age, p_guardian_permission: age === 'minor_13_plus' }); setNotice(error ? error.message : 'Campaign entry accepted. Your verified-run door is ready.', Boolean(error)); if (!error) refresh(); };
   $('#promoForm').onsubmit = async event => { event.preventDefault(); const { error } = await auth.client.rpc('submit_flash_promo', { p_campaign_slug: 'flash-2026', p_platform: $('#promoPlatform').value, p_video_url: $('#promoUrl').value.trim(), p_platform_username: $('#promoHandle').value.trim(), p_rights_confirmed: $('#rightsConfirm').checked, p_repost_permission: $('#repostConfirm').checked }); setNotice(error ? error.message : 'Promotional short received for private review.', Boolean(error)); if (!error) event.target.reset(); };
   window.addEventListener('storage', renderPersonalScores); window.addEventListener('focus', renderPersonalScores); document.addEventListener('visibilitychange', () => { if (!document.hidden) renderPersonalScores(); });
-  if (auth?.client) auth.client.auth.onAuthStateChange(() => refresh()); updateConsentCopy(); refresh();
+  if (auth?.client) auth.client.auth.onAuthStateChange(() => setTimeout(refresh, 0)); updateConsentCopy(); refresh();
 })();
